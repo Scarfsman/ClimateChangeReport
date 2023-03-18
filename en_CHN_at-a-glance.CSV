@@ -1,0 +1,108 @@
+Reporter,Year,Partner,Product categories,Indicator Type,Indicator,Indicator Value
+China,2019,United States,All Products,Export,Trade (US$ Mil)-Top 5 Export Partner,418584.249557
+China,2019,"Hong Kong, China",All Products,Export,Trade (US$ Mil)-Top 5 Export Partner,279616.723587
+China,2019,Japan,All Products,Export,Trade (US$ Mil)-Top 5 Export Partner,143223.969123
+China,2019,"Korea, Rep.",All Products,Export,Trade (US$ Mil)-Top 5 Export Partner,110984.861672
+China,2019,Vietnam,All Products,Export,Trade (US$ Mil)-Top 5 Export Partner,98004.332828
+China,2019,"Korea, Rep.",All Products,Import,Trade (US$ Mil)-Top 5 Import Partner,173553.266864
+China,2019,"Other Asia, nes",All Products,Import,Trade (US$ Mil)-Top 5 Import Partner,172801.013883
+China,2019,Japan,All Products,Import,Trade (US$ Mil)-Top 5 Import Partner,171523.312054
+China,2019,Unspecified,All Products,Import,Trade (US$ Mil)-Top 5 Import Partner,130725.884887
+China,2019,United States,All Products,Import,Trade (US$ Mil)-Top 5 Import Partner,123235.656498
+China,2019,World,Animal,Export,Export(US$ Mil),16105.718334
+China,2019,World,Vegetable,Export,Export(US$ Mil),28237.956059
+China,2019,World,Food Products,Export,Export(US$ Mil),32685.325523
+China,2019,World,Minerals,Export,Export(US$ Mil),5262.215845
+China,2019,World,Fuels,Export,Export(US$ Mil),47035.192655
+China,2019,World,Chemicals,Export,Export(US$ Mil),130293.104915
+China,2019,World,Plastic or Rubber,Export,Export(US$ Mil),106948.842463
+China,2019,World,Hides and Skins,Export,Export(US$ Mil),35383.674824
+China,2019,World,Wood,Export,Export(US$ Mil),43308.530109
+China,2019,World,Textiles and Clothing,Export,Export(US$ Mil),260674.754311
+China,2019,World,Footwear,Export,Export(US$ Mil),63836.880904
+China,2019,World,Stone and Glass,Export,Export(US$ Mil),75570.934324
+China,2019,World,Metals,Export,Export(US$ Mil),183186.398205
+China,2019,World,Mach and Elec,Export,Export(US$ Mil),1087210.741763
+China,2019,World,Transportation,Export,Export(US$ Mil),111902.997914
+China,2019,World,Miscellaneous,Export,Export(US$ Mil),270926.597489
+China,2019,World,Raw materials,Export,Export(US$ Mil),42574.387414
+China,2019,World,Intermediate goods,Export,Export(US$ Mil),406310.245296001
+China,2019,World,Consumer goods,Export,Export(US$ Mil),902271.715653
+China,2019,World,Capital goods,Export,Export(US$ Mil),1135653.53186
+China,2019,World,Raw materials,Import,Import(US$ Mil),560273.011234
+China,2019,World,Intermediate goods,Import,Import(US$ Mil),408409.540307
+China,2019,World,Consumer goods,Import,Import(US$ Mil),288644.343096
+China,2019,World,Capital goods,Import,Import(US$ Mil),800503.464379
+China,2019,World,All Products,Export,Exports (in US$ Mil),2498569.865637
+China,2019,World,All Products,Import,Imports (in US$ Mil),2068950.254597
+China,2019,World,All Products,Tariff,Duty Free Imports (US$ Thousand),950637355.472002
+China,2019,...,...,Development,Trade Balance (current US$ Mil),164980
+China,2019,...,...,Development,GDP (current US$ Mil),14279900
+China,2019,...,...,Tariff,No. Of Tariff Agreement,25
+China,2019,...,...,Import,No. Of Import partners,215
+China,2019,...,...,Import,No. Of Import products,4425
+China,2019,...,...,Export,No. Of Export partners,215
+China,2019,...,...,Export,No. Of Export products,4423
+China,2019,...,...,Others,Population,1397715000
+China,2019,...,...,Others,Ease of Doing Business Rank,31
+China,2019,...,...,Others,Trading Across Borders Rank,56
+China,2019,...,...,Others,CPIA Trade Ratings,
+China,2018,...,...,Others,LPI Rank,26
+China,2018,...,...,Others,LPI Score,3.61
+China,2013,...,...,Others,No Of NTM Affected Products (HS 6 Digit),81
+China,2013,...,...,Others,No Of NTM Measures,3
+China,2009,...,...,Others,Overall Trade Restrictiveness Index -  Applied Tariff,0.0973663
+China,2009,...,...,Others,Overall Trade Restrictiveness Index - MFN Tariff,0.1021822
+China,,...,...,Others,Services Trade Restrictions Index - Over All,36.6
+China,2013,...,...,Others,Temporary Trade Barriers in Effect - Simple Average,1.414180517
+China,2013,...,...,Others,Temporary Trade Barriers in Effect - Weighted Average,1.888844728
+China,2019,United States,All Products,Export,Partner share(%)-Top 5 Export Partner,16.753
+China,2019,"Hong Kong, China",All Products,Export,Partner share(%)-Top 5 Export Partner,11.1911
+China,2019,Japan,All Products,Export,Partner share(%)-Top 5 Export Partner,5.7322
+China,2019,"Korea, Rep.",All Products,Export,Partner share(%)-Top 5 Export Partner,4.4419
+China,2019,Vietnam,All Products,Export,Partner share(%)-Top 5 Export Partner,3.9224
+China,2019,"Korea, Rep.",All Products,Import,Partner share(%)-Top 5 Import Partner,8.3885
+China,2019,"Other Asia, nes",All Products,Import,Partner share(%)-Top 5 Import Partner,8.3521
+China,2019,Japan,All Products,Import,Partner share(%)-Top 5 Import Partner,8.2904
+China,2019,Unspecified,All Products,Import,Partner share(%)-Top 5 Import Partner,6.3185
+China,2019,United States,All Products,Import,Partner share(%)-Top 5 Import Partner,5.9564
+China,2019,World,Animal,Export,Export Product share(%),0.6446
+China,2019,World,Vegetable,Export,Export Product share(%),1.1302
+China,2019,World,Food Products,Export,Export Product share(%),1.3082
+China,2019,World,Minerals,Export,Export Product share(%),0.2106
+China,2019,World,Fuels,Export,Export Product share(%),1.8825
+China,2019,World,Chemicals,Export,Export Product share(%),5.2147
+China,2019,World,Plastic or Rubber,Export,Export Product share(%),4.2804
+China,2019,World,Hides and Skins,Export,Export Product share(%),1.4162
+China,2019,World,Wood,Export,Export Product share(%),1.7333
+China,2019,World,Textiles and Clothing,Export,Export Product share(%),10.433
+China,2019,World,Footwear,Export,Export Product share(%),2.5549
+China,2019,World,Stone and Glass,Export,Export Product share(%),3.0246
+China,2019,World,Metals,Export,Export Product share(%),7.3317
+China,2019,World,Mach and Elec,Export,Export Product share(%),43.5133
+China,2019,World,Transportation,Export,Export Product share(%),4.4787
+China,2019,World,Miscellaneous,Export,Export Product share(%),10.8433
+China,2019,World,Raw materials,Export,Export Product share(%),1.704
+China,2019,World,Intermediate goods,Export,Export Product share(%),16.2617
+China,2019,World,Consumer goods,Export,Export Product share(%),36.1115
+China,2019,World,Capital goods,Export,Export Product share(%),45.4521
+China,2019,World,Raw materials,Import,Import Product share(%),27.0801
+China,2019,World,Intermediate goods,Import,Import Product share(%),19.7399
+China,2019,World,Consumer goods,Import,Import Product share(%),13.9512
+China,2019,World,Capital goods,Import,Import Product share(%),38.6913
+China,2019,World,Raw materials,Tariff,Weighted Average (%),0.957518336618562
+China,2019,World,Intermediate goods,Tariff,Weighted Average (%),2.94068020279152
+China,2019,World,Consumer goods,Tariff,Weighted Average (%),6.07541481910257
+China,2019,World,Capital goods,Tariff,Weighted Average (%),2.03903668438411
+China,2019,World,All Products,Trade Indicator,World Growth (%),-1.13475826045476
+China,2019,World,All Products,Trade Indicator,Country Growth (%),-3.51109966475677
+China,2019,World,All Products,Tariff,Simple Average (%),5.38813710687735
+China,2019,World,All Products,Tariff,Weighted Average (%),2.5328041100603
+China,2019,World,All Products,Tariff,Maximum Rate (%),65
+China,2019,World,All Products,Tariff,Duty Free Tariff Lines Share (%),30.0405439520164
+China,2019,...,...,Trade Indicator,Index of export market penetration,48.1394756270458
+China,2019,...,...,Trade Indicator,HH Market concentration index,0.0552015799920098
+China,2019,...,...,Development,Trade Balance (% of GDP),1.15537234
+China,2019,...,...,Development,Trade in services (% of GDP),5.251194854
+China,2019,...,...,Development,Trade (% of GDP),35.83741382
+China,2019,...,...,Development,"GNI per capita, Atlas method (current US$)",10390
