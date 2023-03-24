@@ -19,5 +19,11 @@ def getDfs(filename):
                                   'Indicator Name',
                                   'Indicator Code'])
     
+    temp_df = temp_df.set_index('Country Name', drop = True)
+    temp_df = temp_df.drop(['Country Code',
+                            'Indicator Name',
+                            'Indicator Code'],
+                           axis = 1)
+    
     return temp_df, temp_df_tr
 
