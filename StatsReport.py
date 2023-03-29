@@ -16,22 +16,40 @@ import scipy.stats as stats
 
 
 def getDfs(filename):
-    
+    """
+    Parameters
+    ----------
+    dataframes : str()
+        The wordbank dataset in CSV format to be read into the script
+    Returns
+    -------
+    temp_df : pd.DataFrame
+        The world bank data frame read in the script with countries as rows and
+        years as columns
+    temp_df_tr : pd.DataFrame
+        The world bank data frame read in the script with years as rows and
+        countries as columns
+    """
+    #skip the rows with no useful information
     temp_df = pd.read_csv(filename, skiprows = 4)
     
     temp_df_tr = pd.DataFrame(temp_df)
     temp_df_tr = temp_df_tr.transpose()
     temp_df_tr.columns = list(temp_df_tr.loc['Country Name',:])
+    #clean up the transposed dataframe by dropping the wors that aren't of 
+    #interest
     temp_df_tr = temp_df_tr.drop(['Country Name', 
                                   'Country Code',
                                   'Indicator Name',
                                   'Indicator Code'])
     
+    #clean up the untrasnposed dataframe. this is so that both dataframes can
+    #be passed to the functions defined below
     temp_df = temp_df.set_index('Country Name', drop = True)
     temp_df = temp_df.drop(['Country Code',
                             'Indicator Name',
                             'Indicator Code'],
-                           axis = 1)
+                             axis = 1)
     
     return temp_df, temp_df_tr
 
@@ -51,13 +69,17 @@ def buildDataForLabel(dataframes, columns, lab):
     Returns
     -------
     temp : pd.DataFrame
-        the 
-
+        Returns a dataframe containing the information in the dataframes passed
+        to the function for the label passed in lab
     """
     lab = str(lab)
     for i in range(len(dataframes)):
         dataframes[i] = dataframes[i].fillna(0)
     
+    #Generate a boolean mask, so that the dataframe only contains information
+    #for the variables where it is present for all values, e.g. if we pass a 
+    #country as lab, and one of the variables is missing data for 1967, then 
+    #1967 will be omitted for all vairables
     mask = []
     for i in range(dataframes[0].shape[1]):
         ith = True
@@ -66,9 +88,14 @@ def buildDataForLabel(dataframes, columns, lab):
                 ith = False
         mask.append(ith)
     
+    #initialise the dataframe by setting the first column equal to the data 
+    #in the first dataframe, then clean it up
     temp = pd.DataFrame(dataframes[0].loc[lab][mask])
     temp[columns[0]] = temp[lab]
     temp = temp.drop(lab, axis = 1)
+    
+    #iterate through the rest of the dataframes in order to pull the values 
+    #our target label
     for i in range(1, len(dataframes)):
         temp[columns[i]] = dataframes[i].loc[lab][mask]
         
@@ -77,10 +104,6 @@ def buildDataForLabel(dataframes, columns, lab):
 
 def compareLabels(dataframes, cols, labels):
     """
-    Builds a correlation matrix for the variables compiled in the passed 
-    dataframes for the labels chosen. shows the correlation for the final 
-    variable in the list
-
     Parameters
     ----------
     dataframes : list[pd.DataFrames]
@@ -95,19 +118,23 @@ def compareLabels(dataframes, cols, labels):
     Returns
     -------
     temp_corr : pd.DataFrame
-        returns the correlation of the variable against the variable in the 
+        Returns the correlation of the variable against the variable in the 
         last column for all the labels passed to the function.
-
     """
+    #build a list of dataframes for the labels and data we want to compare
     new_data = []
     for i in labels:
         new_data.append(buildDataForLabel(dataframes, cols, i).corr())
-        
+    
+    #get the last column of the correlation matrix of the first dataset,
+    #then intialise a dataframe with that data
     temp_corr = pd.DataFrame(new_data[0].iloc[:,len(cols) -1])
     a = cols[-1] 
     temp_corr[labels[0]] = temp_corr[a]
     temp_corr = temp_corr.drop(columns[-1], axis = 1)
     
+    #iterate through the rest of the datasets and add the data for the rest
+    #of the labels
     for i in range(1, len(labels)):
         temp_corr[labels[i]] = new_data[i].iloc[:,len(labels)-1]
         
@@ -116,9 +143,6 @@ def compareLabels(dataframes, cols, labels):
 
 def plotEconomies(labels):
     """
-    Creates a bar chart showing the changes in GDP indexed to 1995 as well as 
-    showing the breakdown in the sectors contribution to GDP
-
     Parameters
     ----------
     labels : list[str()]
@@ -126,7 +150,8 @@ def plotEconomies(labels):
         
     Returns
     -------
-
+        Creates a bar chart showing the changes in GDP indexed to 1995 as 
+        well as showing the breakdown in the sectors contribution to GDP
     """
     fig, ax = plt.subplots()
     
@@ -208,6 +233,21 @@ def plotEconomies(labels):
 
 def plotChange(labels, df, title): 
     
+    """
+    Parameters
+    ----------
+    labels : list[str()]
+        The countries to plot.
+    df : pd.DataFrame
+        the variable the change will be plotted for
+    title : list[str()]
+        The title of the plot       
+    Returns
+    -------
+        Creates a lineplot showing how the the variable in the df dataframe 
+        #has changed for the labels passed to the function between 1995 and
+        #2015
+    """
     fig, ax = plt.subplots()
     df = df.fillna(0)
     x = [str(year) for year in range(1995, 2016)]
@@ -363,6 +403,9 @@ x = x[:-3]
 plt.plot(x, stats.norm.pdf(x, loc = np.mean(x), scale = np.std(x)))
 plt.title('Distribution of Percent Change of CO2 Emissions Between 1995-2015')
 plt.savefig('graphs/Ditsfig.png')
+
+print(stats.skew(x))
+print(stats.kurtosis(x))
 
 corr_df = c02_inv[['change', '1995']] 
 
