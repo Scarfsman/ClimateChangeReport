@@ -6,7 +6,6 @@ Created on Mon Mar 20 18:43:21 2023
 @author: Georg
 """
 #import packages
-import WorldBankParser as WBP
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
