@@ -15,6 +15,27 @@ import scipy.stats as stats
 #Define our functions
 
 
+def getDfs(filename):
+    
+    temp_df = pd.read_csv(filename, skiprows = 4)
+    
+    temp_df_tr = pd.DataFrame(temp_df)
+    temp_df_tr = temp_df_tr.transpose()
+    temp_df_tr.columns = list(temp_df_tr.loc['Country Name',:])
+    temp_df_tr = temp_df_tr.drop(['Country Name', 
+                                  'Country Code',
+                                  'Indicator Name',
+                                  'Indicator Code'])
+    
+    temp_df = temp_df.set_index('Country Name', drop = True)
+    temp_df = temp_df.drop(['Country Code',
+                            'Indicator Name',
+                            'Indicator Code'],
+                           axis = 1)
+    
+    return temp_df, temp_df_tr
+
+
 def buildDataForLabel(dataframes, columns, lab):
     """
     Parameters
@@ -116,7 +137,8 @@ def plotEconomies(labels):
             'Services GDP']
     
     colours = ['#4B0082', '#9400D3', '#999900', '#CCCC00']
-
+    
+    #set up parameters for creating the bars in the chart
     N = len(labels)
     ind = np.arange(N) 
     width = 0.25
@@ -181,7 +203,7 @@ def plotEconomies(labels):
               loc='center left', 
               bbox_to_anchor=(1, 0.75))
     
-    plt.savefig('EconomiesPlot.png', bbox_inches='tight')
+    plt.savefig('graphs/EconomiesPlot.png', bbox_inches='tight')
 
 
 def plotChange(labels, df, title): 
@@ -205,26 +227,26 @@ def plotChange(labels, df, title):
     plt.xticks(rotation = 45)
     plt.xlabel('Year')
     plt.ylabel('{} Index'.format(title))
-    plt.title('{} Changes Between 1995 and 2015'.format(title))
-    plt.savefig('CO2Plot.png', bbox_inches='tight')    
+    plt.title('graphs/{} Changes Between 1995 and 2015'.format(title))
+    plt.savefig('graphs/CO2Plot.png', bbox_inches='tight')    
 
 
 #Import the dataframes of interest
-c02_df, c02_df_tr = WBP.getDfs("C02PerCapita.csv")
-c02_abs_df, c02_abs_df_tr = WBP.getDfs('C02Absolute.csv')
-current_df, current_df_tr = WBP.getDfs("CurrentAccount.csv")
-gdp_df, gdp_df_tr = WBP.getDfs('GDPPerCapita.csv')
-gdp_tot_df, gdp_tot_df_tr = WBP.getDfs('GDPTotal.csv')              
-fossil_df, fossil_df_tr = WBP.getDfs('fossil.csv')
-imports_df, imports_df_tr = WBP.getDfs('LowIncomeImports.csv')
-urban_df, urban_df_tr = WBP.getDfs('UrbanPop.csv')
-forest_df, forest_df_tr = WBP.getDfs('Forest.csv')
+c02_df, c02_df_tr = getDfs('datasets/C02PerCapita.csv')
+c02_abs_df, c02_abs_df_tr = getDfs('datasets/C02Absolute.csv')
+current_df, current_df_tr = getDfs('datasets/CurrentAccount.csv')
+gdp_df, gdp_df_tr = getDfs('datasets/GDPPerCapita.csv')
+gdp_tot_df, gdp_tot_df_tr = getDfs('datasets/GDPTotal.csv')              
+fossil_df, fossil_df_tr = getDfs('datasets/fossil.csv')
+imports_df, imports_df_tr = getDfs('datasets/LowIncomeImports.csv')
+urban_df, urban_df_tr = getDfs('datasets/UrbanPop.csv')
+forest_df, forest_df_tr = getDfs('datasets/Forest.csv')
 
 #import economy databases
-econ_m_df, econ_m_df_tr = WBP.getDfs('economy/Manufacturing.csv')
-econ_i_df, econ_i_df_tr = WBP.getDfs('economy/Industry.csv')
-econ_a_df, econ_a_df_tr = WBP.getDfs('economy/Agriculture.csv')
-econ_s_df, econ_s_df_tr = WBP.getDfs('economy/Services.csv')
+econ_m_df, econ_m_df_tr = getDfs('economy/Manufacturing.csv')
+econ_i_df, econ_i_df_tr = getDfs('economy/Industry.csv')
+econ_a_df, econ_a_df_tr = getDfs('economy/Agriculture.csv')
+econ_s_df, econ_s_df_tr = getDfs('economy/Services.csv')
 
     
 #%%
@@ -235,6 +257,8 @@ data = [current_df_tr, c02_df_tr, gdp_df_tr]
 labels = ['Current Account', 'C02', 'GDP']
 corr_df = buildDataForLabel(data, labels, 2015)
 
+corr_df.plot.scatter('Current Account', 'C02')
+
 fig, ax = plt.subplots()
 
 ax.scatter(corr_df.loc[:,'Current Account'], corr_df.loc[:,'C02'], s = 1)
@@ -243,7 +267,7 @@ plt.xlabel('Current account balance (% of GDP)')
 plt.ylabel('CO2 emissions (metric tons per capita)')
 plt.title('Current Account Against C02 Emissions For Countries in 2015')
 
-plt.savefig('Scatterplot.png')
+plt.savefig('graphs/Scatterplot.png')
 
 corrs = []
 years = []
@@ -269,7 +293,7 @@ plt.xlabel('Year')
 plt.ylabel('Correlation Coefficient')
 plt.title('Correlation Between Current Account and C02 Emissions per Capita')
 
-plt.savefig('Linefig.png')
+plt.savefig('graphs/Linefig.png')
 
 
 #%%
@@ -338,7 +362,7 @@ x.sort()
 x = x[:-3]
 plt.plot(x, stats.norm.pdf(x, loc = np.mean(x), scale = np.std(x)))
 plt.title('Distribution of Percent Change of CO2 Emissions Between 1995-2015')
-plt.savefig('Ditsfig.png')
+plt.savefig('graphs/Ditsfig.png')
 
 corr_df = c02_inv[['change', '1995']] 
 
@@ -346,9 +370,14 @@ corr_df = c02_inv[['change', '1995']]
 
 fig, ax = plt.subplots()
 
-country = 'Indonesia'
+country = 'Denmark'
 data = [c02_abs_df, gdp_df, fossil_df, imports_df, urban_df, forest_df] 
-labels = ['C02', 'GDP', 'Fossil Fuels', 'Imports (Low/Mid)', 'Urban Population', 'Forest Cover']
+labels = ['C02', 
+          'GDP', 
+          'Fossil Fuels', 
+          'Imports (Low/Mid)', 
+          'Urban Population', 
+          'Forest Cover']
 corr_df = buildDataForLabel(data, labels, country)
 ax.matshow(corr_df.corr())
 plt.xticks(range(len(labels)), labels, rotation = 90)
@@ -358,6 +387,6 @@ for (i, j), z in np.ndenumerate(corr_df.corr()):
     
 plt.title('{} Correlation Plot'.format(country))
 
-plt.savefig('{}Plot.png'.format(country))
+plt.savefig('graphs/{}Plot.png'.format(country), bbox_inches='tight')
 
 
