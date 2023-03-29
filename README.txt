@@ -1,6 +1,2 @@
 
-Data Sources:
-
-C02 Per Capita: https://data.worldbank.org/indicator/EN.ATM.CO2E.PC
-
-Current Account: https://data.worldbank.org/indicator/BN.CAB.XOKA.GD.ZS
+Repo for assingment 2 in the applied data science module. all data sourced from the world bank
